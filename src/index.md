@@ -1,2 +1,2 @@
-hello  src
-<items mtitle="test" desc="test" path="/category/"></items>
+
+<items mtitle="test" desc="test"></items>

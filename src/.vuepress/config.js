@@ -7,7 +7,7 @@ module.exports = {
     configureWebpack: {
         resolve: {
           alias: {
-            '@alias': resolve('./public')
+            '@': resolve('./public')
           }
         }
     },
