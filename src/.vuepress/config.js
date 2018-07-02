@@ -1,7 +1,7 @@
 const path = require('path');
 const resolve = pathName => path.join(__dirname, pathName)
 module.exports = {
-    base: "/",
+    base: "/dist/",
     title: '',
     description: 'Just playing around',
     configureWebpack: {
