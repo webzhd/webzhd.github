@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>类型 | 前端笔记</title>
+    <meta name="description" content="前端笔记">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.268f5945.css" as="style"><link rel="preload" href="/assets/js/app.fc814c36.js" as="script"><link rel="preload" href="/assets/js/4.ba3362ae.js" as="script"><link rel="prefetch" href="/assets/js/1.f30e72f7.js"><link rel="prefetch" href="/assets/js/2.fb48a650.js"><link rel="prefetch" href="/assets/js/3.7171d144.js"><link rel="prefetch" href="/assets/js/5.1fbf1004.js"><link rel="prefetch" href="/assets/js/6.007da872.js"><link rel="prefetch" href="/assets/js/7.c32af023.js"><link rel="prefetch" href="/assets/js/8.e0ddb732.js"><link rel="prefetch" href="/assets/js/9.ccc99da8.js"><link rel="prefetch" href="/assets/js/10.d62d5f59.js"><link rel="prefetch" href="/assets/js/11.137a5bdc.js"><link rel="prefetch" href="/assets/js/12.b2acd890.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.268f5945.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="app" data-v-50a5adef><ul class="ivu-menu ivu-menu-dark ivu-menu-horizontal" data-v-50a5adef><div class="container" data-v-50a5adef><div class="layout-logo" data-v-50a5adef></div><div class="layout-nav" data-v-50a5adef><li class="ivu-menu-item" data-v-50a5adef><div data-v-50a5adef><i class="mr-sm ivu-icon ivu-icon-home" data-v-50a5adef></i><span data-v-50a5adef>home</span></div></li><li class="ivu-menu-item" data-v-50a5adef><div data-v-50a5adef><i class="mr-sm ivu-icon ivu-icon-grid" data-v-50a5adef></i><span data-v-50a5adef>分类</span></div></li><!----><li class="ivu-menu-item" data-v-50a5adef><div data-v-50a5adef><i class="mr-sm ivu-icon ivu-icon-person" data-v-50a5adef></i><span data-v-50a5adef>关于</span></div></li></div></div></ul><div class="container" data-v-50a5adef><div class="content custom markdown-body" data-v-50a5adef><h4 id="类型"><a href="#类型" aria-hidden="true" class="header-anchor">#</a> 类型</h4><blockquote><p>JavaScript 中的变量是没有类型的， 只有值才有, 在对变量执行 typeof 操作时，得到的结果并不是该变量的类型,而是该变量持有的值的类
+型，因为 JavaScript 中的变量没有类型。</p></blockquote><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 这样是安全的</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token constant">DEBUG</span> <span class="token operator">!==</span> <span class="token string">&quot;undefined&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token string">&quot;Debugging is starting&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>  
+<span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span><span class="token constant">DEBUG</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token comment">// ..</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="数组"><a href="#数组" aria-hidden="true" class="header-anchor">#</a> 数组</h4><blockquote><p>数组通过数字进行索引，但有趣的是它们也是对象，所以也可以包含字符串键值和属性 （但这些并不计算在数组长度内）：</p></blockquote><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+a<span class="token punctuation">[</span><span class="token string">&quot;foobar&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+a<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token comment">// 1</span>
+a<span class="token punctuation">[</span><span class="token string">&quot;foobar&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+a<span class="token punctuation">.</span>foobar<span class="token punctuation">;</span> <span class="token comment">// 2</span>
+</code></pre></div><blockquote><p>这里有个问题需要特别注意，如果字符串键值能够被强制类型转换为十进制数字的话，它就会被当作数字索引来处理。</p></blockquote><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+a<span class="token punctuation">[</span><span class="token string">&quot;13&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+a<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token comment">// 14</span>
+</code></pre></div><h4 id="数字"><a href="#数字" aria-hidden="true" class="header-anchor">#</a> 数字</h4><blockquote><p>isNaN();</p></blockquote><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">/</span> <span class="token string">&quot;foo&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token string">&quot;foo&quot;</span><span class="token punctuation">;</span>
+a<span class="token punctuation">;</span> <span class="token comment">// NaN</span>
+b<span class="token punctuation">;</span> <span class="token string">&quot;foo&quot;</span>
+window<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span> a <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+window<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span> b <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true——?????????</span>
+
+<span class="token comment">////////////////////////////</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Number<span class="token punctuation">.</span>isNaN<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+Number<span class="token punctuation">.</span><span class="token function-variable function">isNaN</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token keyword">typeof</span> n <span class="token operator">===</span> <span class="token string">&quot;number&quot;</span> <span class="token operator">&amp;&amp;</span>
+            window<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span> n <span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 或者es6的Number.isNaN</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">/</span> <span class="token string">&quot;foo&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token string">&quot;foo&quot;</span><span class="token punctuation">;</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span> a <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span> b <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false——ok！</span>
+</code></pre></div><h4 id="一些假值"><a href="#一些假值" aria-hidden="true" class="header-anchor">#</a> 一些假值</h4><blockquote><p>ES5 规范 9.2 节中定义了抽象操作 ToBoolean，列举了布尔强制类型转换所有可能出现的结果。以下这些是假值：</p></blockquote><div class="language-js extra-class"><pre class="language-js"><code>    • undefined
+    • <span class="token keyword">null</span>
+    • <span class="token boolean">false</span>
+    • <span class="token operator">+</span><span class="token number">0</span>、 <span class="token operator">-</span><span class="token number">0</span> 和 <span class="token number">NaN</span>
+    • <span class="token string">&quot;&quot;</span>
+</code></pre></div></div></div><div class="menu-btn" data-v-46cfe9ce data-v-50a5adef><section class="mod model menu-icon" data-v-46cfe9ce><div class="menu" data-v-46cfe9ce><div class="bar" data-v-46cfe9ce></div><div class="bar" data-v-46cfe9ce></div><div class="bar" data-v-46cfe9ce></div></div></section></div></div></div>
+    <script src="/assets/js/4.ba3362ae.js" defer></script><script src="/assets/js/app.fc814c36.js" defer></script>
+  </body>
+</html>

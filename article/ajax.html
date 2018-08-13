@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>前端笔记</title>
+    <meta name="description" content="前端笔记">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.268f5945.css" as="style"><link rel="preload" href="/assets/js/app.fc814c36.js" as="script"><link rel="preload" href="/assets/js/10.d62d5f59.js" as="script"><link rel="prefetch" href="/assets/js/4.ba3362ae.js"><link rel="prefetch" href="/assets/js/1.f30e72f7.js"><link rel="prefetch" href="/assets/js/2.fb48a650.js"><link rel="prefetch" href="/assets/js/3.7171d144.js"><link rel="prefetch" href="/assets/js/5.1fbf1004.js"><link rel="prefetch" href="/assets/js/6.007da872.js"><link rel="prefetch" href="/assets/js/7.c32af023.js"><link rel="prefetch" href="/assets/js/8.e0ddb732.js"><link rel="prefetch" href="/assets/js/9.ccc99da8.js"><link rel="prefetch" href="/assets/js/11.137a5bdc.js"><link rel="prefetch" href="/assets/js/12.b2acd890.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.268f5945.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="app" data-v-50a5adef><ul class="ivu-menu ivu-menu-dark ivu-menu-horizontal" data-v-50a5adef><div class="container" data-v-50a5adef><div class="layout-logo" data-v-50a5adef></div><div class="layout-nav" data-v-50a5adef><li class="ivu-menu-item" data-v-50a5adef><div data-v-50a5adef><i class="mr-sm ivu-icon ivu-icon-home" data-v-50a5adef></i><span data-v-50a5adef>home</span></div></li><li class="ivu-menu-item" data-v-50a5adef><div data-v-50a5adef><i class="mr-sm ivu-icon ivu-icon-grid" data-v-50a5adef></i><span data-v-50a5adef>分类</span></div></li><!----><li class="ivu-menu-item" data-v-50a5adef><div data-v-50a5adef><i class="mr-sm ivu-icon ivu-icon-person" data-v-50a5adef></i><span data-v-50a5adef>关于</span></div></li></div></div></ul><div class="container" data-v-50a5adef><div class="content custom markdown-body" data-v-50a5adef><p>1.1</p><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">AnyXHR</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>_XHR <span class="token operator">=</span> window<span class="token punctuation">.</span>XMLHttpRequest<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>sendData <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>readyState <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>responseText <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>method <span class="token operator">=</span> <span class="token string">&quot;get&quot;</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>url <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">open</span><span class="token punctuation">(</span>method<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>url <span class="token operator">=</span> url<span class="token operator">||</span><span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>method <span class="token operator">=</span> method <span class="token operator">||</span> <span class="token string">&quot;get&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">send</span><span class="token punctuation">(</span>sendData<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>readyState <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>responseText <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'test'</span><span class="token punctuation">:</span> <span class="token number">1111</span><span class="token punctuation">}</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onreadystatechange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+window<span class="token punctuation">.</span>XMLHttpRequest <span class="token operator">=</span> AnyXHR<span class="token punctuation">;</span>
+</code></pre></div><p>2.1</p><div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name">NewXHR</span> <span class="token punctuation">{</span> <span class="token comment">// 一个新的xhr类</span>
+        <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>readyState <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>response <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>responseText <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>responseType <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>responseURL <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>responseXML <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>timeout <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>upload <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onloadstart</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onprogress</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onabort</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onerror</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onloadend</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+
+        <span class="token function">open</span><span class="token punctuation">(</span>method<span class="token punctuation">,</span> url<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>proxyXHR<span class="token punctuation">.</span>isTest<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">send</span><span class="token punctuation">(</span>sendData<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>proxyXHR<span class="token punctuation">.</span>isTest<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>readyState <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>responseText <span class="token operator">=</span> proxyXHR<span class="token punctuation">.</span>resData
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onreadystatechange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span>
+
+        <span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+        <span class="token punctuation">}</span>
+
+        <span class="token function">getAllResponseHeaders</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+        <span class="token punctuation">}</span>
+        <span class="token function">getResponseHeader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+        <span class="token punctuation">}</span>
+      
+        <span class="token function">setRequestHeader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            
+        <span class="token punctuation">}</span>
+        <span class="token function">overrideMimeType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">ProxyXHR</span> <span class="token punctuation">{</span><span class="token comment">// 一些钩子函数</span>
+        <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>xhr <span class="token operator">=</span> window<span class="token punctuation">.</span>XMLHttpRequest<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>headers <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>  <span class="token comment">//  请求头</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>reqData <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>   <span class="token comment">// 发送数据</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>resData <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 响应数据</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>isTest <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">start</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            window<span class="token punctuation">.</span>XMLHttpRequest <span class="token operator">=</span> NewXHR<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            window<span class="token punctuation">.</span>XMLHttpRequest <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>xhr<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">config</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">let</span> <span class="token punctuation">{</span> headers<span class="token punctuation">,</span> reqData<span class="token punctuation">,</span> resData<span class="token punctuation">,</span> isTest <span class="token punctuation">}</span> <span class="token operator">=</span> options<span class="token punctuation">;</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>headers <span class="token operator">=</span> headers<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>reqData <span class="token operator">=</span> reqData<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>resData <span class="token operator">=</span> resData<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>isTest <span class="token operator">=</span> isTest<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">interceptors</span><span class="token punctuation">(</span>options<span class="token punctuation">,</span> callback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">let</span> <span class="token punctuation">{</span> url<span class="token punctuation">,</span> method <span class="token punctuation">}</span> <span class="token operator">=</span> options<span class="token punctuation">;</span>
+            <span class="token keyword">let</span> res<span class="token punctuation">,</span> req <span class="token operator">=</span> <span class="token keyword">null</span>
+
+            res <span class="token operator">=</span> <span class="token string">&quot;res&quot;</span><span class="token punctuation">;</span>
+            req <span class="token operator">=</span> <span class="token string">&quot;req&quot;</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token function">callback</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> req<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+
+
+    window<span class="token punctuation">.</span>proxyXHR <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProxyXHR</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+</code></pre></div><p>3.1</p><div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name">NewXHR</span> <span class="token punctuation">{</span> <span class="token comment">// 一个新的xhr类</span>
+        <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>url <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>methods <span class="token operator">=</span> <span class="token string">&quot;get&quot;</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>statusText <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>readyState <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>response <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>responseText <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>responseType <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>responseURL <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>responseXML <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>timeout <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>upload <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//readyState属性的值发生改变</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onloadstart</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 程序开始加载时触发</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onprogress</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 上传文件时，XMLHTTPRequest 实例对象本身和实例的upload属性，都有一个progress事件，会不断返回上传的进度</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onabort</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//当一个资源的加载已中止时，将触发 abort事件。</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onerror</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 加载资源失败时触发</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 资源加载完成时触发事件</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">onloadend</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//abort、load和error这三个事件，会伴随一个loadend事件，表示请求结束，但不知道其是否成功。</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">timeout</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 超时</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;init&quot;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">open</span><span class="token punctuation">(</span>method<span class="token punctuation">,</span> url<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 用于初始化 XMLHttpRequest 实例对象， 指定 HTTP 请求的参数</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>methods <span class="token operator">=</span> method <span class="token operator">||</span> <span class="token string">&quot;get&quot;</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>url <span class="token operator">=</span> url <span class="token operator">||</span> <span class="token string">&quot;&quot;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>proxyXHR<span class="token punctuation">.</span>skipXhr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">proxyXHR<span class="token punctuation">.</span>xhr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>methods<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>readyState <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onreadystatechange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+
+        <span class="token function">send</span><span class="token punctuation">(</span>sendData<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//用于实际发出 HTTP 请求</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>proxyXHR<span class="token punctuation">.</span>skipXhr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">skipXhr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">nexNativeXhr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+
+        <span class="token function">nexNativeXhr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>readyState <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span>readyState<span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>readyState <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setNewXhrAttribute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onreadystatechange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span><span class="token function-variable function">onloadstart</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onloadstart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setNewXhrAttribute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span><span class="token function-variable function">error</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onerror</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>proxyXHR<span class="token punctuation">.</span>resData <span class="token operator">||</span> sendData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+
+        <span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//用来终止已经发出的 HTTP 请求</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>proxyXHR<span class="token punctuation">.</span>skipXhr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span>
+            <span class="token punctuation">}</span>
+             <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span><span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">getAllResponseHeaders</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>proxyXHR<span class="token punctuation">.</span>skipXhr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span><span class="token function">getAllResponseHeaders</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">getResponseHeader</span><span class="token punctuation">(</span>option<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>proxyXHR<span class="token punctuation">.</span>skipXhr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span><span class="token function">getResponseHeader</span><span class="token punctuation">(</span>option<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">setRequestHeader</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>proxyXHR<span class="token punctuation">.</span>skipXhr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span><span class="token function">setRequestHeader</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">overrideMimeType</span><span class="token punctuation">(</span>option<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 用来指定 MIME 类型</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>proxyXHR<span class="token punctuation">.</span>skipXhr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span><span class="token function">overrideMimeType</span><span class="token punctuation">(</span>option<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+
+        <span class="token function">skipXhr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onloadstart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onprogress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>statusText <span class="token operator">=</span> <span class="token string">&quot;OK&quot;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>readyState <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>responseText <span class="token operator">=</span> proxyXHR<span class="token punctuation">.</span>resData
+            <span class="token keyword">this</span><span class="token punctuation">.</span>response <span class="token operator">=</span> proxyXHR<span class="token punctuation">.</span>resData
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onreadystatechange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onloadend</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">setNewXhrAttribute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment">//debugger</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span>status<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>statusText <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span>statusText<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>responseText <span class="token operator">=</span> proxyXHR<span class="token punctuation">.</span>resData <span class="token operator">||</span> <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span>responseText<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>response <span class="token operator">=</span> proxyXHR<span class="token punctuation">.</span>resData <span class="token operator">||</span> <span class="token keyword">this</span><span class="token punctuation">.</span>nativeXhr<span class="token punctuation">.</span>response<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">ProxyXHR</span> <span class="token punctuation">{</span>
+        <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>xhr <span class="token operator">=</span> window<span class="token punctuation">.</span>XMLHttpRequest<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>headers <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>  <span class="token comment">//  请求头</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>reqData <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>   <span class="token comment">// 发送数据</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>resData <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 响应数据</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>skipXhr <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// 是否跳过http请求</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">start</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            window<span class="token punctuation">.</span>XMLHttpRequest <span class="token operator">=</span> NewXHR<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            window<span class="token punctuation">.</span>XMLHttpRequest <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>xhr<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">config</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">let</span> <span class="token punctuation">{</span> headers<span class="token punctuation">,</span> reqData<span class="token punctuation">,</span> resData<span class="token punctuation">,</span> skipXhr <span class="token punctuation">}</span> <span class="token operator">=</span> options<span class="token punctuation">;</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>headers <span class="token operator">=</span> headers<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>reqData <span class="token operator">=</span> reqData<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>resData <span class="token operator">=</span> resData<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>skipXhr <span class="token operator">=</span> skipXhr<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">interceptors</span><span class="token punctuation">(</span>options<span class="token punctuation">,</span> callback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">let</span> <span class="token punctuation">{</span> url<span class="token punctuation">,</span> method <span class="token punctuation">}</span> <span class="token operator">=</span> options<span class="token punctuation">;</span>
+            <span class="token keyword">let</span> res<span class="token punctuation">,</span> req <span class="token operator">=</span> <span class="token keyword">null</span>
+
+            res <span class="token operator">=</span> <span class="token string">&quot;res&quot;</span><span class="token punctuation">;</span>
+            req <span class="token operator">=</span> <span class="token string">&quot;req&quot;</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token function">callback</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> req<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+
+
+    window<span class="token punctuation">.</span>proxyXHR <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProxyXHR</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div></div></div><div class="menu-btn" data-v-46cfe9ce data-v-50a5adef><section class="mod model menu-icon" data-v-46cfe9ce><div class="menu" data-v-46cfe9ce><div class="bar" data-v-46cfe9ce></div><div class="bar" data-v-46cfe9ce></div><div class="bar" data-v-46cfe9ce></div></div></section></div></div></div>
+    <script src="/assets/js/10.d62d5f59.js" defer></script><script src="/assets/js/app.fc814c36.js" defer></script>
+  </body>
+</html>
