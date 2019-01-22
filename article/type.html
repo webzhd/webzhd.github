@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>类型 | 前端笔记</title>
-    <meta name="description" content="前端笔记">
+    <title>类型 | web开发</title>
+    <meta name="description" content="web开发总结|JavaScript|React|Vue|node|go">
     
     
-    <link rel="preload" href="/assets/css/0.styles.b1eac0d0.css" as="style"><link rel="preload" href="/assets/js/app.3bd9b192.js" as="script"><link rel="preload" href="/assets/js/5.8aeefa06.js" as="script"><link rel="prefetch" href="/assets/js/1.da8f2307.js"><link rel="prefetch" href="/assets/js/2.fc84345a.js"><link rel="prefetch" href="/assets/js/3.05a3034c.js"><link rel="prefetch" href="/assets/js/4.ced2b143.js"><link rel="prefetch" href="/assets/js/6.8af2fb44.js"><link rel="prefetch" href="/assets/js/7.309e7fc8.js"><link rel="prefetch" href="/assets/js/8.c2b0c805.js"><link rel="prefetch" href="/assets/js/9.f6f0f614.js"><link rel="prefetch" href="/assets/js/10.eae5f664.js"><link rel="prefetch" href="/assets/js/11.872941b8.js"><link rel="prefetch" href="/assets/js/12.40fea87a.js"><link rel="prefetch" href="/assets/js/13.6ab323ed.js">
-    <link rel="stylesheet" href="/assets/css/0.styles.b1eac0d0.css">
+    <link rel="preload" href="/assets/css/0.styles.931aa8b0.css" as="style"><link rel="preload" href="/assets/js/app.03c62ea9.js" as="script"><link rel="preload" href="/assets/js/5.f5ca502e.js" as="script"><link rel="prefetch" href="/assets/js/7.530bfa7b.js"><link rel="prefetch" href="/assets/js/1.e35d3b60.js"><link rel="prefetch" href="/assets/js/2.84d92e3e.js"><link rel="prefetch" href="/assets/js/3.f307fec2.js"><link rel="prefetch" href="/assets/js/4.e50157bd.js"><link rel="prefetch" href="/assets/js/6.a9872d52.js"><link rel="prefetch" href="/assets/js/8.c6700cad.js"><link rel="prefetch" href="/assets/js/9.b370aee1.js"><link rel="prefetch" href="/assets/js/10.b0c06942.js"><link rel="prefetch" href="/assets/js/11.31297c71.js"><link rel="prefetch" href="/assets/js/12.b265a0b0.js"><link rel="prefetch" href="/assets/js/13.c7ddf06a.js"><link rel="prefetch" href="/assets/js/14.ef96b0f6.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.931aa8b0.css">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div id="app" data-v-17217cff><ul class="ivu-menu ivu-menu-dark ivu-menu-horizontal" data-v-17217cff><div class="container" data-v-17217cff><div class="layout-logo" data-v-17217cff></div><div class="layout-nav" data-v-17217cff><a href="/" target="_self" class="ivu-menu-item" data-v-17217cff><div data-v-17217cff><i class="mr-sm ivu-icon ivu-icon-ios-home" data-v-17217cff></i><span data-v-17217cff>home</span></div></a><a href="/category/" target="_self" class="ivu-menu-item" data-v-17217cff><div data-v-17217cff><i class="mr-sm ivu-icon ivu-icon-ios-grid" data-v-17217cff></i><span data-v-17217cff>分类</span></div></a><!----><a href="/person/" target="_self" class="ivu-menu-item" data-v-17217cff><div data-v-17217cff><i class="mr-sm ivu-icon ivu-icon-ios-person" data-v-17217cff></i><span data-v-17217cff>关于</span></div></a></div></div></ul><div class="container" data-v-17217cff><div class="content custom markdown-body" data-v-17217cff><h4 id="类型"><a href="#类型" aria-hidden="true" class="header-anchor">#</a> 类型</h4><blockquote><p>JavaScript 中的变量是没有类型的， 只有值才有, 在对变量执行 typeof 操作时，得到的结果并不是该变量的类型,而是该变量持有的值的类
+    <div id="app" data-server-rendered="true"><div id="app" data-v-8239ee42><nav class="menu" data-v-8239ee42><ul class="container" data-v-8239ee42><li class="active" data-v-8239ee42><a href="/" class="router-link-active" data-v-8239ee42>home</a></li><li data-v-8239ee42><a href="/category/" data-v-8239ee42>分类</a></li><!----><li data-v-8239ee42><a href="/person/" data-v-8239ee42>关于</a></li></ul></nav><div class="container" data-v-8239ee42><div class="content custom markdown-body" data-v-8239ee42><h4 id="类型"><a href="#类型" aria-hidden="true" class="header-anchor">#</a> 类型</h4><blockquote><p>JavaScript 中的变量是没有类型的， 只有值才有, 在对变量执行 typeof 操作时，得到的结果并不是该变量的类型,而是该变量持有的值的类
 型，因为 JavaScript 中的变量没有类型。</p></blockquote><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 这样是安全的</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token constant">DEBUG</span> <span class="token operator">!==</span> <span class="token string">&quot;undefined&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token string">&quot;Debugging is starting&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -54,7 +54,7 @@ Number<span class="token punctuation">.</span><span class="token function">isNaN
     • <span class="token boolean">false</span>
     • <span class="token operator">+</span><span class="token number">0</span>、 <span class="token operator">-</span><span class="token number">0</span> 和 <span class="token number">NaN</span>
     • <span class="token string">&quot;&quot;</span>
-</code></pre></div></div></div><div class="menu-btn" data-v-46cfe9ce data-v-17217cff><section class="mod model menu-icon" data-v-46cfe9ce><div class="menu" data-v-46cfe9ce><div class="bar" data-v-46cfe9ce></div><div class="bar" data-v-46cfe9ce></div><div class="bar" data-v-46cfe9ce></div></div></section></div></div></div>
-    <script src="/assets/js/5.8aeefa06.js" defer></script><script src="/assets/js/app.3bd9b192.js" defer></script>
+</code></pre></div></div></div><div class="menu-btn" data-v-46cfe9ce data-v-8239ee42><section class="mod model menu-icon" data-v-46cfe9ce><div class="menu" data-v-46cfe9ce><div class="bar" data-v-46cfe9ce></div><div class="bar" data-v-46cfe9ce></div><div class="bar" data-v-46cfe9ce></div></div></section></div></div></div>
+    <script src="/assets/js/5.f5ca502e.js" defer></script><script src="/assets/js/app.03c62ea9.js" defer></script>
   </body>
 </html>
