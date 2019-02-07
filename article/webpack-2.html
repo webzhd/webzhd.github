@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack4配置完整的react的项目（二：生产环境配置） | web开发</title>
+    <meta name="description" content="web开发总结|JavaScript|React|Vue|node|go">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.cddd5967.css" as="style"><link rel="preload" href="/assets/js/app.f53ddf8e.js" as="script"><link rel="preload" href="/assets/js/5.4ed8fdb6.js" as="script"><link rel="prefetch" href="/assets/js/9.78562d5b.js"><link rel="prefetch" href="/assets/js/1.1f8dc8aa.js"><link rel="prefetch" href="/assets/js/2.1dc6e741.js"><link rel="prefetch" href="/assets/js/3.bef44b7d.js"><link rel="prefetch" href="/assets/js/4.b21af8f8.js"><link rel="prefetch" href="/assets/js/6.f2a7ddf0.js"><link rel="prefetch" href="/assets/js/7.2c64268b.js"><link rel="prefetch" href="/assets/js/8.8551aff9.js"><link rel="prefetch" href="/assets/js/10.3d111008.js"><link rel="prefetch" href="/assets/js/11.aeaaee98.js"><link rel="prefetch" href="/assets/js/12.12db78d2.js"><link rel="prefetch" href="/assets/js/13.a7acc271.js"><link rel="prefetch" href="/assets/js/14.af840523.js"><link rel="prefetch" href="/assets/js/15.8282f709.js"><link rel="prefetch" href="/assets/js/16.9d636dbf.js"><link rel="prefetch" href="/assets/js/17.28ce5916.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.cddd5967.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div data-v-3a975dd4><nav class="menu" data-v-3a975dd4><ul class="container" data-v-3a975dd4><li class="active" data-v-3a975dd4><a href="/" class="router-link-active" data-v-3a975dd4>home</a></li><li data-v-3a975dd4><a href="/category/" data-v-3a975dd4>分类</a></li><!----><li data-v-3a975dd4><a href="/person/" data-v-3a975dd4>关于</a></li></ul></nav> <main class="container" data-v-3a975dd4><div class="content custom markdown-body" data-v-3a975dd4><h3 id="webpack4配置完整的react的项目（二：生产环境配置）"><a href="#webpack4配置完整的react的项目（二：生产环境配置）" aria-hidden="true" class="header-anchor">#</a> webpack4配置完整的react的项目（二：生产环境配置）</h3> <blockquote><p>生产环境的配置与开发环境稍微有些不同，如下</p></blockquote> <h4 id="代码压缩"><a href="#代码压缩" aria-hidden="true" class="header-anchor">#</a> 代码压缩</h4> <blockquote><p>webpack4 将mode设置为'production',webpack打包时会自动压缩代码</p></blockquote> <h4 id="关闭sourcemap"><a href="#关闭sourcemap" aria-hidden="true" class="header-anchor">#</a> 关闭sourcemap</h4> <blockquote><p>生产环境要保证js有最小的体积，可以把devtool设置为false</p></blockquote> <h4 id="gzip压缩"><a href="#gzip压缩" aria-hidden="true" class="header-anchor">#</a> gzip压缩</h4> <blockquote><p>gzip 压缩可以缩小js的体积为原来的1/3左右，这个还是很有必要的（当然这个要能服务器端配合一下，支持gzip压缩）</p></blockquote> <blockquote><p>安装webpack对应插件</p></blockquote> <div class="language-shell extra-class"><pre class="language-text"><code>    yarn add --dev compression-webpack-plugin
+</code></pre></div><div class="language-JavaScript extra-class"><pre class="language-javascript"><code>    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+         <span class="token keyword">new</span> <span class="token class-name">CompressionPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span> 
+            filename<span class="token punctuation">:</span> <span class="token string">&quot;[path].gz[query]&quot;</span><span class="token punctuation">,</span>
+            algorithm<span class="token punctuation">:</span> <span class="token string">&quot;gzip&quot;</span><span class="token punctuation">,</span>
+            test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
+            threshold<span class="token punctuation">:</span> <span class="token number">10240</span><span class="token punctuation">,</span>
+            minRatio<span class="token punctuation">:</span> <span class="token number">0.8</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+</code></pre></div><h4 id="完整释例代码"><a href="#完整释例代码" aria-hidden="true" class="header-anchor">#</a> 完整释例代码</h4> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> HtmlWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'html-webpack-plugin'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> CompressionPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'compression-webpack-plugin'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">resolve</span> <span class="token operator">=</span> <span class="token punctuation">(</span>dir<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'../'</span><span class="token punctuation">,</span> dir<span class="token punctuation">)</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    mode<span class="token punctuation">:</span> <span class="token string">'production'</span><span class="token punctuation">,</span>
+    devtool<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        app<span class="token punctuation">:</span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'src/index.jsx'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        publicPath<span class="token punctuation">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
+        filename<span class="token punctuation">:</span> <span class="token string">'[name].js'</span><span class="token punctuation">,</span>
+        path<span class="token punctuation">:</span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'dist'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    resolve<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        extensions<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'.js'</span><span class="token punctuation">,</span> <span class="token string">'.jsx'</span><span class="token punctuation">,</span> <span class="token string">'.scss'</span><span class="token punctuation">,</span> <span class="token string">'.css'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        alias<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'@'</span><span class="token punctuation">:</span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'src'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                test<span class="token punctuation">:</span> <span class="token regex">/\.(js|jsx)$/</span><span class="token punctuation">,</span>
+                exclude<span class="token punctuation">:</span> <span class="token regex">/node_modules/</span><span class="token punctuation">,</span>
+                loader<span class="token punctuation">:</span> <span class="token string">'babel-loader'</span><span class="token punctuation">,</span>
+                options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                        <span class="token string">'@babel/plugin-transform-runtime'</span><span class="token punctuation">,</span>
+                        <span class="token string">'@babel/plugin-proposal-class-properties'</span><span class="token punctuation">,</span>
+                        <span class="token string">'@babel/plugin-syntax-dynamic-import'</span><span class="token punctuation">,</span>
+                        <span class="token string">'@babel/plugin-proposal-object-rest-spread'</span>
+                    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    presets<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                        <span class="token string">'@babel/preset-env'</span><span class="token punctuation">,</span>
+                        <span class="token string">'@babel/preset-react'</span>
+                    <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                test<span class="token punctuation">:</span> <span class="token regex">/\.scss/</span><span class="token punctuation">,</span>
+                loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                    <span class="token string">'style-loader'</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        loader<span class="token punctuation">:</span> <span class="token string">'css-loader'</span><span class="token punctuation">,</span>
+                        options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                            importLoaders<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token string">'postcss-loader'</span><span class="token punctuation">,</span>
+                    <span class="token string">'sass-loader'</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                test<span class="token punctuation">:</span> <span class="token regex">/\.css/</span><span class="token punctuation">,</span>
+                loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                    <span class="token string">'style-loader'</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        loader<span class="token punctuation">:</span> <span class="token string">'css-loader'</span><span class="token punctuation">,</span>
+                        options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                            importLoaders<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        loader<span class="token punctuation">:</span> <span class="token string">'postcss-loader'</span><span class="token punctuation">,</span>
+                        options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                            options<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                test<span class="token punctuation">:</span> <span class="token regex">/\.(png|jpg|gif)$/</span><span class="token punctuation">,</span>
+                use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                        loader<span class="token punctuation">:</span> <span class="token string">'file-loader'</span><span class="token punctuation">,</span>
+                        options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                            name<span class="token punctuation">:</span> <span class="token string">'[path][name].[ext]'</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                test<span class="token punctuation">:</span> <span class="token regex">/\.svg/</span><span class="token punctuation">,</span>
+                use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                        loader<span class="token punctuation">:</span> <span class="token string">'svg-inline-loader'</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            filename<span class="token punctuation">:</span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'dist/index.html'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            template<span class="token punctuation">:</span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'static/index.html'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            chunks<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'app'</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+         <span class="token keyword">new</span> <span class="token class-name">CompressionPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span> 
+            filename<span class="token punctuation">:</span> <span class="token string">&quot;[path].gz[query]&quot;</span><span class="token punctuation">,</span>
+            algorithm<span class="token punctuation">:</span> <span class="token string">&quot;gzip&quot;</span><span class="token punctuation">,</span>
+            test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
+            threshold<span class="token punctuation">:</span> <span class="token number">10240</span><span class="token punctuation">,</span>
+            minRatio<span class="token punctuation">:</span> <span class="token number">0.8</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="结尾"><a href="#结尾" aria-hidden="true" class="header-anchor">#</a> 结尾</h4> <blockquote><p>一个极简单的react的生产环境配置就完成了，是不是很简单呢？如果你需要css抽取与压缩等其他webpack配置的的话，请关注我后面的笔记吧，一起学习，一起进步！</p></blockquote></div></main> <div class="menu-btn" data-v-d66eefda data-v-3a975dd4><section class="mod model menu-icon" data-v-d66eefda><div class="menu" data-v-d66eefda><div class="bar" data-v-d66eefda></div> <div class="bar" data-v-d66eefda></div> <div class="bar" data-v-d66eefda></div></div></section></div></div></div>
+    <script src="/assets/js/5.4ed8fdb6.js" defer></script><script src="/assets/js/app.f53ddf8e.js" defer></script>
+  </body>
+</html>
